@@ -1,21 +1,18 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Tabs from '../Tabs';
+import Now from './now';
+import  Today from './today';
+import Forecast from './forecast';
 
 export default class Detail extends React.Component {
   render() {
-    return (
+    return(
       <View style={styles.wrapper}>
         <Tabs>
-          <View label="Now">
-            <Text>Tab Now</Text>
-          </View>
-          <View label="Today">
-            <Text>Tab Today</Text>
-          </View>
-          <View label="Forecast">
-            <Text>Tab Forecast</Text>
-          </View>
+          <Now label="Now" />
+          <Today label="Today" />
+          <Forecast label="Forecast" />
         </Tabs>
       </View>
     )
