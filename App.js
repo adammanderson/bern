@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { AppLoading, Font } from 'expo';
 import CurrentStatus from './components/CurrentStatus';
 import Tips from './components/Tips';
+import Detail from './components/Detail';
 
 export default class App extends React.Component {
   state = {
@@ -34,6 +35,7 @@ export default class App extends React.Component {
           adjective="whopping"
         />
         <Tips />
+        <Detail />
       </View>
     );
   }
