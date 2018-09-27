@@ -1,11 +1,39 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { AppLoading, Font } from 'expo';
+import CurrentStatus from './components/CurrentStatus';
+import Tips from './components/Tips';
 
 export default class App extends React.Component {
+  state = {
+    loaded: false,
+  }
+
+  componentWillMount() {
+    this._loadFontsAsync();
+  }
+
+  _loadFontsAsync = async () => {
+    await Font.loadAsync({
+      MaisonBook: require('./assets/fonts/MaisonNeue-Book.ttf'),
+      MaisonBold: require('./assets/fonts/MaisonNeue-Bold.ttf'),
+      MaisonMono: require('./assets/fonts/MaisonNeue-Mono.ttf')
+    });
+    this.setState({loaded: true});
+  }
+
   render() {
+    if (!this.state.loaded) {
+      return <AppLoading />;
+    }
     return (
       <View style={styles.container}>
-        <Text>Open up App.js heyyyy to start working on your app!</Text>
+        <CurrentStatus
+          index="very high"
+          value="550"
+          adjective="whopping"
+        />
+        <Tips />
       </View>
     );
   }
@@ -14,8 +42,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'red',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    paddingTop: 80,
+    backgroundColor: '#2a2a2a',
+  }
 });
