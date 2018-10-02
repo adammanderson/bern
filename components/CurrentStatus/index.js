@@ -5,10 +5,11 @@ const CurrentStatus = ({index = 'unkown', value, adjective}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>
-        Right now, carbon intensity in your area is
+        Right now, electricity consumption in your area is creating
         <Text style={styles.bold}>
-           {` ${index}.`}
+           {` ${index} `}
         </Text>
+        CO₂ emissions.
       </Text>
       <Text style={styles.mono}>
          {`A ${adjective} ${value}g CO₂/kWh.`}
