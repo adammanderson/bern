@@ -20,7 +20,10 @@ export default class Bar extends React.Component {
 
   render() {
     const { label, value } = this.props;
-    const interpolatedWidth = this._width.interpolate({inputRange: [0, 100], outputRange: ['0%', '100%']});
+    const interpolatedWidth = this._width.interpolate({
+      inputRange: [0, 100],
+      outputRange: ['0%', '100%']
+    });
 
     return (
       <View style={styles.wrapper}>
