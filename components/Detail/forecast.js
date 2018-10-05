@@ -13,7 +13,8 @@ export default () => {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    paddingHorizontal: 30,
+    paddingVertical: 25,
+    paddingHorizontal: 16,
     justifyContent: 'center'
   },
   heading: {

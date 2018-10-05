@@ -1,6 +1,5 @@
 import React from 'react';
 import { Animated, StyleSheet, Text, View } from 'react-native';
-import AnimateNumber from 'react-native-animate-number';
 
 export default class Bar extends React.Component {
   constructor(props) {
@@ -18,6 +17,10 @@ export default class Bar extends React.Component {
     ]).start();
   }
 
+  componentWillUnmount() {
+    this._width.stopAnimation();
+  }
+
   render() {
     const { label, value } = this.props;
     const interpolatedWidth = this._width.interpolate({
@@ -30,16 +33,7 @@ export default class Bar extends React.Component {
         <View style={styles.textWrapper}>
           <Text style={styles.label}>{label}</Text>
           <Text style={styles.value}>
-            <AnimateNumber
-              value={value}
-              countBy={1}
-              formatter={(val) => {
-                return `${Math.round(val*100)/100}%`;
-              }}
-              timing={(interval, progress) => {
-                return interval * (1 - Math.sin(Math.PI*progress) )*10
-              }}
-            />
+            { value }
           </Text>
         </View>
         <View style={styles.bar}>

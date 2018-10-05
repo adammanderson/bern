@@ -1,18 +1,21 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native';
 import Angry from './angry'
+import Happy from './happy'
 
-const Bot = () =>
-  <View style={styles.botWrapper}>
-    <Angry />
-  </View>
+const Bot = (props) => {
+  console.log(props)
+  return (
+    <View style={styles.botWrapper}>
+      <Angry />
+    </View>
+  )
+}
 
 const styles = StyleSheet.create({
   botWrapper: {
-    width: 80,
-    height: 80,
-    backgroundColor: '#FF2D37',
-    borderRadius: 30
+    width: 120,
+    height: 120,
   },
   text: {
     marginBottom: 15,

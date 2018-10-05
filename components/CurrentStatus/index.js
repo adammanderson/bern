@@ -16,9 +16,6 @@ const CurrentStatus = ({index = 'unkown', value, adjective}) => {
           </Text>
           CO₂ emissions.
         </Text>
-        <Text style={styles.mono}>
-           {`A ${adjective} ${value}g CO₂/kWh.`}
-        </Text>
       </View>
     </View>
   )
@@ -26,22 +23,25 @@ const CurrentStatus = ({index = 'unkown', value, adjective}) => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
-    flexDirection: 'row',
+    marginHorizontal: 16,
+    marginTop: 40,
+    marginBottom: 0,
+    padding: 12,
+    alignItems: 'center',
+    backgroundColor: '#FF2D37',
+    borderRadius: 4
   },
   botWrapper: {
 
   },
   statusWrapper: {
-    flex: 1,
-    marginLeft: 15,
   },
   text: {
-    marginBottom: 15,
     fontFamily: 'MaisonBook',
     fontSize: 16,
     lineHeight: 22,
-    color: '#e4e4e4'
+    color: '#e4e4e4',
+    textAlign: 'center'
   },
   bold: {
     fontFamily: 'MaisonBold',

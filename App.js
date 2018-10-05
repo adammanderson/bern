@@ -1,9 +1,20 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { AppLoading, Font } from 'expo';
-import CurrentStatus from './components/CurrentStatus';
-import Tips from './components/Tips';
-import Detail from './components/Detail';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider, connect } from 'react-redux';
+import axios from 'axios';
+import axiosMiddleware from 'redux-axios-middleware';
+import reducer from './redux/reducer';
+
+import Region from './components/Region';
+
+const client = axios.create({
+  baseURL: 'https://api.carbonintensity.org.uk/',
+  responseType: 'json'
+});
+
+const store = createStore(reducer, applyMiddleware(axiosMiddleware(client)));
 
 export default class App extends React.Component {
   state = {
@@ -28,15 +39,11 @@ export default class App extends React.Component {
       return <AppLoading />;
     }
     return (
-      <View style={styles.container}>
-        <CurrentStatus
-          index="very high"
-          value="550"
-          adjective="whopping"
-        />
-        <Tips />
-        <Detail />
-      </View>
+      <Provider store={store}>
+        <View style={styles.container}>
+          <Region />
+        </View>
+      </Provider>
     );
   }
 }
@@ -44,7 +51,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 40,
     backgroundColor: '#1b242a',
   }
 });

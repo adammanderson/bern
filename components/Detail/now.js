@@ -2,44 +2,30 @@ import React from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import Bar from '../Bar';
 
-const BARS = [
-  {
-    label: 'Gas',
-    value: '43.5'
-  },
-  {
-    label: 'Coal',
-    value: '50.9'
-  },
-  {
-    label: 'Wind',
-    value: 5
-  },
-  {
-    label: 'Solar',
-    value: '0'
-  },
-  {
-    label: 'Biomass',
-    value: '43.5'
-  },
-  {
-    label: 'Hydro',
-    value: '4'
-  }
-];
+const LABELS = {
+  'gas'    : 'Gas',
+  'coal'   : 'Coal',
+  'wind'   : 'Wind',
+  'solar'  : 'Solar',
+  'biomass': 'Biomass',
+  'hydro'  : 'Hydro',
+  'nuclear': 'Nuclear',
+  'other'  : 'Other sources',
+  'imports': 'Imports'
+};
+
 const DELAY = 100;
 
-export default () => {
+export default ({ mix }) => {
   return(
-    <ScrollView>
-      <View style={styles.wrapper}>
-        { BARS.map((bar, index) =>
+    <ScrollView style={styles.wrapper}>
+      <View style={styles.inner}>
+        { mix && mix.sort((a, b) => b.perc - a.perc).map((bar, index) =>
           <Bar
             key={index}
             delay={DELAY * index}
-            label={bar.label}
-            value={bar.value}
+            label={LABELS[bar.fuel] || bar.fuel}
+            value={bar.perc}
           />
         )}
       </View>
@@ -49,6 +35,9 @@ export default () => {
 
 const styles = StyleSheet.create({
   wrapper: {
+    maxHeight: 300
+  },
+  inner: {
     padding: 16
   }
 });

@@ -10,8 +10,8 @@ export default class Detail extends React.Component {
     return(
       <View style={styles.wrapper}>
         <Tabs>
-          <Now label="Now" />
-          <Today label="Today" />
+          <Now label="Now" mix={this.props.mix}/>
+          {/* <Today label="Today" /> */}
           <Forecast label="Forecast" />
         </Tabs>
       </View>
@@ -22,6 +22,10 @@ export default class Detail extends React.Component {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    marginTop: 10
+    margin: 16,
+    marginTop: 0,
+    borderRadius: 4,
+    borderWidth: 0.5,
+    borderColor: 'rgba(255,255,255,0.4)'
   }
 });
