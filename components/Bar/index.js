@@ -23,6 +23,7 @@ export default class Bar extends React.Component {
 
   render() {
     const { label, value } = this.props;
+    const formattedValue = value ? `${value}%` : 0;
     const interpolatedWidth = this._width.interpolate({
       inputRange: [0, 100],
       outputRange: ['0%', '100%']
@@ -33,7 +34,7 @@ export default class Bar extends React.Component {
         <View style={styles.textWrapper}>
           <Text style={styles.label}>{label}</Text>
           <Text style={styles.value}>
-            { value }
+            {formattedValue}
           </Text>
         </View>
         <View style={styles.bar}>
@@ -56,13 +57,13 @@ const styles = StyleSheet.create({
   label: {
     flexGrow: 1,
     lineHeight: 17,
-    fontSize: 17,
+    fontSize: 15,
     fontFamily: 'MaisonMono',
     color: 'white'
   },
   value: {
     color: 'white',
-    fontSize: 17,
+    fontSize: 16,
     fontFamily: 'MaisonBook'
   },
   bar: {

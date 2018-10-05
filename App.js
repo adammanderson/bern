@@ -1,20 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { AppLoading, Font } from 'expo';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider, connect } from 'react-redux';
-import axios from 'axios';
-import axiosMiddleware from 'redux-axios-middleware';
-import reducer from './redux/reducer';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 import Region from './components/Region';
 
-const client = axios.create({
-  baseURL: 'https://api.carbonintensity.org.uk/',
-  responseType: 'json'
-});
-
-const store = createStore(reducer, applyMiddleware(axiosMiddleware(client)));
 
 export default class App extends React.Component {
   state = {
