@@ -20,7 +20,6 @@ export default function reducer(state = { region: {} }, action) {
 }
 
 export function getRegional(postcode) {
-  console.log(postcode)
   return {
     type: GET_REGIONAL,
     payload: {

@@ -27,7 +27,7 @@ export default class Time extends React.Component {
   render() {
     const { time, forecastIndex, forecast } = this.props;
     const interpolatedBottom = this._bottom.interpolate({inputRange: [0, 1], outputRange: [1, 0.1]});
-    console.log(this._bottom)
+
     return(
       <View style={styles.wrapper}>
         <Text style={styles.time}>{time}</Text>

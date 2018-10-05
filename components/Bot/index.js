@@ -4,7 +4,6 @@ import Angry from './angry'
 import Happy from './happy'
 
 const Bot = (props) => {
-  console.log(props)
   return (
     <View style={styles.botWrapper}>
       <Angry />

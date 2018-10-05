@@ -10,7 +10,6 @@ export default class Tabs extends React.Component {
   }
 
   handleActiveTab = (index) => {
-    console.log(index)
     this.setState({
       activeTab: index
     });
