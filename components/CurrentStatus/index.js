@@ -28,7 +28,6 @@ class CurrentStatus extends React.Component {
 
   render() {
     const { index, value, adjective } = this.props;
-    console.log(colours[this.state.prevIndex], colours[index])
     let backgroundColor = this.interpolatedColor.interpolate({
       inputRange: [0, 1],
       outputRange: [colours[this.state.prevIndex], colours[index]]

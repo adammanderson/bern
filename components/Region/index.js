@@ -6,17 +6,25 @@ import CurrentStatus from '../CurrentStatus';
 import Tips from '../Tips';
 import Detail from '../Detail';
 
-import { getRegional, getPostcode } from '../../redux/reducer';
+import { getRegional, getAddress } from '../../redux/reducer';
 
 class Region extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
   componentDidMount() {
-    this.props.getRegional('SW17');
-    this.props.getPostcode('SW179PB');
+    this.props.getAddress(this.props.postcode);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.address.outcode !== nextProps.address.outcode) {
+      this.props.getRegional(nextProps.address.outcode)
+    }
   }
 
   render() {
-    const { loading, region } = this.props;
+    const { loading, region, address } = this.props;
     const regionData = !!region.data && region.data[0];
     const index = !!regionData && regionData.intensity.index || 'unclear';
     const mix = !!regionData && regionData.generationmix;
@@ -24,8 +32,8 @@ class Region extends React.Component {
     return (
       <React.Fragment>
         <Header
-          postcode={this.props.postcode}
-          onRefresh={() => this.props.getRegional('B1')}
+          address={this.props.address}
+          onRefresh={() => this.props.getRegional(address.outcode)}
         />
         <ScrollView style={styles.container}>
           <CurrentStatus
@@ -54,13 +62,13 @@ const mapStateToProps = state => {
   return {
     loading: state.loading,
     region: storedRegion,
-    postcode: state.postcode
+    address: state.address
   };
 };
 
 const mapDispatchToProps = {
   getRegional,
-  getPostcode
+  getAddress
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Region);

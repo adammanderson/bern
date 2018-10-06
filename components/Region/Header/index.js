@@ -12,7 +12,7 @@ const Header = (props) => {
           size={28}
         />
       </TouchableOpacity>
-      <Text style={styles.location}>{props.postcode.admin_district}</Text>
+      <Text style={styles.location}>{props.address.admin_district}</Text>
       <TouchableOpacity  style={styles.refresh} onPress={props.onRefresh}>
         <Refresh
           fill='white'

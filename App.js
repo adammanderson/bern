@@ -10,6 +10,7 @@ import Region from './components/Region';
 export default class App extends React.Component {
   state = {
     loaded: false,
+    postcode: 'SW179PW'
   }
 
   componentWillMount() {
@@ -32,7 +33,9 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <View style={styles.container}>
-          <Region />
+          <Region
+            postcode={this.state.postcode}
+          />
         </View>
       </Provider>
     );
