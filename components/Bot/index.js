@@ -1,15 +1,17 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native';
-import Angry from './angry'
-import Happy from './happy'
+import Angry from './angry';
+import Happy from './happy';
+import Upset from './upset';
+import Love from './love';
 
 const FACES = {
-  'unknown':   <Happy />,
+  'unknown':   <Love />,
   'very low':  <Happy />,
   'low':       <Happy />,
   'moderate':  <Happy />,
   'high':      <Angry />,
-  'very high': <Angry />
+  'very high': <Upset />
 }
 const Bot = (props) => {
   return (
