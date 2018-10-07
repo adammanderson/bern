@@ -6,12 +6,13 @@ import store from './redux/store';
 import { themeColours } from './utils/colours';
 
 import Region from './components/Region';
-
+import Settings from './components/Settings';
 
 export default class App extends React.Component {
   state = {
     loaded: false,
-    postcode: 'SW179PW'
+    postcode: 'SW179PW',
+    settingsVisible: false
   }
 
   componentWillMount() {
@@ -27,6 +28,10 @@ export default class App extends React.Component {
     this.setState({loaded: true});
   }
 
+  handleSettingsVisible = (visible) => {
+    this.setState({settingsVisible: visible});
+  }
+
   render() {
     if (!this.state.loaded) {
       return <AppLoading />;
@@ -36,6 +41,11 @@ export default class App extends React.Component {
         <View style={styles.container}>
           <Region
             postcode={this.state.postcode}
+            handleSettingsVisible={this.handleSettingsVisible}
+          />
+          <Settings
+            settingsVisible={this.state.settingsVisible}
+            handleSettingsVisible={this.handleSettingsVisible}
           />
         </View>
       </Provider>

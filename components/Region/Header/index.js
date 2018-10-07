@@ -7,13 +7,13 @@ import { themeColours } from '../../../utils/colours';
 const Header = (props) => {
   return (
     <View style={styles.wrapper}>
-      <TouchableOpacity  style={styles.settings} onPress={() => {}}>
+      <TouchableOpacity  style={styles.settings} onPress={() => {props.handleSettingsVisible(true)}}>
         <Settings
           fill='white'
           size={28}
         />
       </TouchableOpacity>
-      <Text style={styles.location}>{props.address.admin_district}</Text>
+      <Text style={styles.label}>{props.address.admin_district}</Text>
       <TouchableOpacity  style={styles.refresh} onPress={props.onRefresh}>
         <Refresh
           fill='white'
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     backgroundColor: themeColours.dark
   },
-  location: {
+  label: {
     flex: 1,
     fontFamily: 'MaisonBold',
     fontSize: 18,

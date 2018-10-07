@@ -28,12 +28,12 @@ class Region extends React.Component {
     const regionData = !!region.data && region.data[0];
     const index = !!regionData && regionData.intensity.index || 'unclear';
     const mix = !!regionData && regionData.generationmix;
-
     return (
       <React.Fragment>
         <Header
           address={this.props.address}
           onRefresh={() => this.props.getRegional(address.outcode)}
+          handleSettingsVisible={this.props.handleSettingsVisible}
         />
         <ScrollView style={styles.container}>
           <CurrentStatus
