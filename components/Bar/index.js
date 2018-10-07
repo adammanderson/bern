@@ -28,7 +28,7 @@ export default class Bar extends React.Component {
       inputRange: [0, 100],
       outputRange: ['0%', '100%']
     });
-
+    console.log(label)
     return (
       <View style={styles.wrapper}>
         <View style={styles.textWrapper}>
@@ -38,7 +38,7 @@ export default class Bar extends React.Component {
           </Text>
         </View>
         <View style={styles.bar}>
-          <Animated.View style={[styles.barValue, { width: interpolatedWidth}]}/>
+          <Animated.View style={[styles.barValue, { width: interpolatedWidth, backgroundColor: this.props.colour}]}/>
         </View>
       </View>
     )

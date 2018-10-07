@@ -1,14 +1,34 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Dimensions } from 'react-native';
+import { Kettle, Dryer, Hairdryer, Flying } from '../Icons';
 
 export default class Tips extends React.Component {
 
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.card}>
-          <Text style={styles.text}>Avoid using the washing machine or dishwasher for the time being.</Text>
-        </View>
+        <Text style={styles.heading}>What to avoid</Text>
+        <ScrollView
+          horizontal={true}
+          style={styles.cards}
+        >
+          <View style={styles.card}>
+            <Kettle />
+            <Text style={styles.label}>Kettle</Text>
+          </View>
+          <View style={styles.card}>
+            <Dryer />
+            <Text style={styles.label}>Dryer</Text>
+          </View>
+          <View style={styles.card}>
+            <Hairdryer />
+            <Text style={styles.label}>Hair dryer</Text>
+          </View>
+          <View style={styles.card}>
+            <Flying />
+            <Text style={styles.label}>Flying</Text>
+          </View>
+        </ScrollView>
       </View>
     )
   }
@@ -16,20 +36,28 @@ export default class Tips extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    padding: 16
+    marginHorizontal: 15,
+    marginVertical: 10,
   },
-  text: {
+  cards: {
+
+  },
+  label: {
     fontFamily: 'MaisonBook',
-    fontSize: 15,
+    fontSize: 12,
     lineHeight: 20,
-    color: '#2a2a2a'
+    color: 'white',
+    textAlign: 'center'
   },
   card: {
-    flex: 1,
-    paddingVertical: 15,
-    paddingHorizontal: 20,
-    backgroundColor: 'white',
-    borderRadius: 4,
+    flexGrow: 0,
+    paddingVertical: 5,
+    marginRight: 20
+  },
+  heading: {
+    marginBottom: 10,
+    fontFamily: 'MaisonBold',
+    fontSize: 15,
+    color: 'white'
   }
 });

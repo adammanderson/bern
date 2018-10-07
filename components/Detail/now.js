@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import Bar from '../Bar';
 import formatArray from '../../utils/formatArray';
+import { energyColours } from '../../utils/colours';
 
 const LABELS = {
   'gas'    : 'Gas',
@@ -29,6 +30,7 @@ const renderMix = (mix) => {
           delay={DELAY * index}
           label={LABELS[bar.fuel] || bar.fuel}
           value={bar.perc}
+          colour={energyColours[bar.fuel] || 'white'}
         />
       )}
       <Text style={styles.redundant}>

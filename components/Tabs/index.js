@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
+import { themeColours } from '../../utils/colours';
 
 export default class Tabs extends React.Component {
   constructor(props) {
@@ -18,8 +19,7 @@ export default class Tabs extends React.Component {
   render() {
     return(
       <View style={styles.wrapper}>
-        <ScrollView
-          horizontal={true}
+        <View
           style={styles.nav}
         >
           {React.Children.toArray(this.props.children).map((child, index) => {
@@ -39,7 +39,7 @@ export default class Tabs extends React.Component {
               </View>
             )
           })}
-        </ScrollView>
+        </View>
         <View style={styles.tabContent}>
           {React.Children.toArray(this.props.children)[this.state.activeTab]}
         </View>
@@ -51,38 +51,41 @@ export default class Tabs extends React.Component {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
+    backgroundColor: themeColours.darkish,
+    borderRadius: 4,
   },
   nav: {
-    flexGrow: 0,
-    paddingHorizontal: 16,
+    flexGrow: 1,
+    flexDirection: 'row',
+    paddingHorizontal: 0,
     borderBottomWidth: 0.5,
-    borderBottomColor: 'rgba(255,255,255,0.4)'
+    borderBottomColor: 'rgba(255,255,255,0.4)',
   },
   navTab: {
-    marginRight: 40,
+    flex: 1,
     borderBottomColor: 'transparent',
-    borderBottomWidth: 2
+    borderBottomWidth: 2,
   },
   tabLabel: {
-    flex: 0,
     paddingTop: 12,
     paddingBottom: 10,
     fontFamily: 'MaisonBook',
-    fontSize: 17,
-    color: '#e4e4e4'
+    fontSize: 16,
+    color: '#e4e4e4',
+    textAlign: 'center'
   },
   activeNavTab: {
-    marginRight: 40,
+    flex: 1,
     borderBottomColor: 'white',
-    borderBottomWidth: 2
+    borderBottomWidth: 2,
   },
   activeTabLabel: {
-    flex: 0,
     paddingTop: 12,
     paddingBottom: 10,
     fontFamily: 'MaisonBold',
-    fontSize: 18,
-    color: 'white'
+    fontSize: 16,
+    color: 'white',
+    textAlign: 'center'
   },
   tabContent: {
     flex: 1

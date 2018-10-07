@@ -4,12 +4,13 @@ import Angry from './angry';
 import Happy from './happy';
 import Upset from './upset';
 import Love from './love';
+import Awkward from './awkward';
 
 const FACES = {
   'unknown':   <Love />,
   'very low':  <Happy />,
   'low':       <Happy />,
-  'moderate':  <Happy />,
+  'moderate':  <Awkward />,
   'high':      <Angry />,
   'very high': <Upset />
 }
@@ -23,8 +24,8 @@ const Bot = (props) => {
 
 const styles = StyleSheet.create({
   botWrapper: {
-    width: 120,
-    height: 120,
+    width: 100,
+    height: 100,
   },
   text: {
     marginBottom: 15,

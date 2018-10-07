@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { AppLoading, Font } from 'expo';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import { themeColours } from './utils/colours';
 
 import Region from './components/Region';
 
@@ -45,6 +46,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1b242a',
+    backgroundColor: themeColours.dark,
   }
 });

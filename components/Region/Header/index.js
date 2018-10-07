@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, Image, View, TouchableOpacity } from 'react-native';
 import Settings from './settings';
 import Refresh from './refresh';
+import { themeColours } from '../../../utils/colours';
 
 const Header = (props) => {
   return (
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
     paddingTop: 30,
     paddingBottom: 4,
     paddingHorizontal: 8,
-    backgroundColor: '#1b242a',
+    backgroundColor: themeColours.dark
   },
   location: {
     flex: 1,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Animated, Text, View } from 'react-native';
 import Bot from '../Bot'
-import colours from '../../utils/colours';
+import { statusColours } from '../../utils/colours';
 
 class CurrentStatus extends React.Component {
   constructor(props) {
@@ -30,7 +30,7 @@ class CurrentStatus extends React.Component {
     const { index, value, adjective } = this.props;
     let backgroundColor = this.interpolatedColor.interpolate({
       inputRange: [0, 1],
-      outputRange: [colours[this.state.prevIndex], colours[index]]
+      outputRange: [statusColours[this.state.prevIndex], statusColours[index]]
     });
 
     return (
@@ -40,11 +40,11 @@ class CurrentStatus extends React.Component {
         </View>
         <View style={styles.statusWrapper}>
           <Text style={styles.text}>
-            Electricity consumption in your area is creating
+            Energy usage in your area is producing
             <Text style={styles.bold}>
                {` ${index} `}
             </Text>
-            CO₂ emissions.
+            CO₂ emissions
           </Text>
         </View>
       </Animated.View>
@@ -54,10 +54,9 @@ class CurrentStatus extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 16,
-    marginTop: 10,
-    marginBottom: 0,
-    padding: 12,
+    marginHorizontal: 15,
+    marginVertical: 10,
+    padding: 10,
     alignItems: 'center',
     borderRadius: 4
   },
